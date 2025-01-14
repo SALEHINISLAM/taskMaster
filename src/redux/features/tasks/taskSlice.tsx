@@ -80,23 +80,23 @@ const createTask = (taskData: draftTask, id?: string): ITask => {
 
 
 export const selectTasks = (state: RootState) => {
-    const filter = state.todo.filter
+    const filter = state.persisted.todo.filter
     console.log(filter)
     if (filter === "High") {
-        return state.todo.tasks.filter(task => task.priority === "High")
+        return state.persisted.todo.tasks.filter(task => task.priority === "High")
     }
     else if (filter === "Medium") {
-        return state.todo.tasks.filter(task => task.priority === "Medium")
+        return state.persisted.todo.tasks.filter(task => task.priority === "Medium")
     }
     else if (filter === "Low") {
-        return state.todo.tasks.filter(task => task.priority === "Low")
+        return state.persisted.todo.tasks.filter(task => task.priority === "Low")
     } else {
-        return state.todo.tasks
+        return state.persisted.todo.tasks
     }
 }
 
 export const selectFilter = (state: RootState) => {
-    return state.todo.filter
+    return state.persisted.todo.filter
 }
 
 export const { addTask, toggleCompleteState, deleteTask, updateFilter } = taskSlice.actions
