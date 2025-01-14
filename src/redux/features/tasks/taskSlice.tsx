@@ -59,7 +59,6 @@ const taskSlice = createSlice({
 
         toggleCompleteState: (state, action: PayloadAction<string>) => {
             state.tasks.forEach(task => task.id === action.payload ? task.isCompleted = !task.isCompleted : task)
-            state.tasks = state.tasks.filter(task => task.id !== action.payload)
         },
         deleteTask: (state, action: PayloadAction<string>) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload)
@@ -86,28 +85,23 @@ const createTask = (taskData: draftTask, id?: string): ITask => {
 
 
 export const selectTasks = (state: RootState) => {
-    const filter = state.persisted.todo.filter
-    const status = state.persisted.todo.status
-    console.log(filter)
-    if (filter === "High") {
-        return state.persisted.todo.tasks.filter(task => task.priority === "High")
-    }
-    else if (filter === "Medium") {
-        return state.persisted.todo.tasks.filter(task => task.priority === "Medium")
-    }
-    else if (filter === "Low") {
-        return state.persisted.todo.tasks.filter(task => task.priority === "Low")
-    }
-    else if (status === "pending") {
-        return state.persisted.todo.tasks.filter(task => task.isCompleted === false)
-    }
-    else if (status === "completed") {
-        return state.persisted.todo.tasks.filter(task => task.isCompleted === true)
-    }
-    else {
-        return state.persisted.todo.tasks
-    }
-}
+    const { filter, status, tasks } = state.persisted.todo;
+
+    return tasks.filter((task) => {
+        // Apply priority filter if it exists
+        const priorityMatches = filter === "All" || task.priority === filter;
+
+        // Apply status filter if it exists
+        const statusMatches =
+            status === "all" ||
+            (status === "pending" && !task.isCompleted) ||
+            (status === "completed" && task.isCompleted);
+
+        // Only include tasks that match all filters
+        return priorityMatches && statusMatches;
+    });
+};
+
 
 export const selectFilter = (state: RootState) => {
     return state.persisted.todo.filter
@@ -117,6 +111,6 @@ export const selectStatus = (state: RootState) => {
     return state.persisted.todo.status
 }
 
-export const { addTask, toggleCompleteState, deleteTask, updateFilter } = taskSlice.actions
+export const { addTask, toggleCompleteState, deleteTask, updateFilter, updateStatus } = taskSlice.actions
 
 export default taskSlice.reducer;

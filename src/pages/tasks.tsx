@@ -1,7 +1,7 @@
 import { AddTaskModal } from "@/components/modules/tasks/addTask"
 import TaskCard from "@/components/modules/tasks/taskCard"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { selectTasks, updateFilter } from "@/redux/features/tasks/taskSlice"
+import { selectTasks, updateFilter, updateStatus } from "@/redux/features/tasks/taskSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/hook"
 
 export default function Tasks() {
@@ -21,13 +21,12 @@ export default function Tasks() {
         </Tabs>
         <AddTaskModal />
       </div>
-      <div className="">
-      <Tabs defaultValue={"All"}>
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger onClick={() => dispatch(updateFilter("All"))} value="All">All</TabsTrigger>
-            <TabsTrigger onClick={() => dispatch(updateFilter("High"))} value="High">High</TabsTrigger>
-            <TabsTrigger onClick={() => dispatch(updateFilter("Medium"))} value="Medium">Medium</TabsTrigger>
-            <TabsTrigger onClick={() => dispatch(updateFilter("Low"))} value="Low">Low</TabsTrigger>
+      <div className="my-3">
+      <Tabs defaultValue={"pending"}>
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger onClick={() => dispatch(updateStatus("all"))} value="All">All</TabsTrigger>
+            <TabsTrigger onClick={() => dispatch(updateStatus("pending"))} value="pending">Pending</TabsTrigger>
+            <TabsTrigger onClick={() => dispatch(updateStatus("completed"))} value="completed">Completed</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
