@@ -1,0 +1,3 @@
+<Provider store={store}>
+      <RouterProvider router={routes}/>
+    </Provider>
