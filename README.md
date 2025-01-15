@@ -4,7 +4,7 @@ Task Master is a task management or to-do list web application where users can e
 
 ##
 ## ER Diagram
-![TaskMaster er diagram](https://raw.githubusercontent.com/SALEHINISLAM/taskMaster/main/teaskMasterERD.png)
+![TaskMaster er diagram](https://raw.githubusercontent.com/SALEHINISLAM/taskMaster/main/taskMasterERD.png)
 
 ##
 ## Features
