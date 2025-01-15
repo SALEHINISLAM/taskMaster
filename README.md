@@ -3,6 +3,10 @@
 Task Master is a task management or to-do list web application where users can efficiently manage tasks. It allows users to add, update, and delete tasks, mark tasks as complete, filter tasks based on priority, and view pending tasks assigned to specific users.
 
 ##
+## ER Diagram
+![TaskMaster er diagram](https://raw.githubusercontent.com/SALEHINISLAM/taskMaster/main/teaskMasterERD.png)
+
+##
 ## Features
 * **User Management:** Add, delete, and manage users.
 * **Task Management:** 
