@@ -58,7 +58,7 @@ const userSlice = createSlice({
 export const selectUsers = (state: RootState) => state.persisted.user.users
 export const { addUser, removeUser } = userSlice.actions
 export const selectPendingTasksByUser = (state: RootState, userId: string) =>
-    state.persisted.todo.tasks.filter((task) => task.assignedTo === userId && !task.isCompleted);
+    state.persisted.todo.tasks.filter((task) => task.assignedTo === userId && !task.isCompleted && state.persisted.todo.tasks.includes(task));
 export const userName=(state:RootState,userId:string)=>{
     return state.persisted.user.users.find(user=>user.id===userId)
 }
