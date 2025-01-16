@@ -62,6 +62,9 @@ export const selectPendingTasksByUser = (state: RootState, userId: string) =>
 export const userName=(state:RootState,userId:string)=>{
     return state.persisted.user.users.find(user=>user.id===userId)
 }
-
+export const isUserDeleted=(state:RootState,userId:string)=>{
+    const isUserExist= state.persisted.user.users.find((user)=>user.id===userId)
+    return isUserExist? true :false
+}
 
 export default userSlice.reducer
