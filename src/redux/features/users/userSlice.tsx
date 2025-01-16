@@ -10,7 +10,7 @@ interface InitialState {
 
 const initialState: InitialState = {
     users: [{
-        name: "Salehin",
+        name: "Default User",
         id: "asdfghjkl"
     }]
 }
