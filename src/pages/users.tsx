@@ -3,13 +3,18 @@ import UserCard from "@/components/modules/users/userCard";
 import { openUserModal } from "@/redux/features/modal/userModalSlice";
 import { selectUsers } from "@/redux/features/users/userSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useEffect } from "react";
 
 export default function Users() {
   const users = useAppSelector(selectUsers)
   const dispatch = useAppDispatch()
-  if (users.length === 0) {
-    dispatch(openUserModal(null))
-  }
+  
+  useEffect(()=>{
+    if (users.length === 0) {
+      dispatch(openUserModal(null))
+    }
+  },[users,users.length,dispatch])
+  
   return (
     <div className="mx-auto max-w-7xl pt-5 mt-20 px-2">
       <div className="flex justify-end gap-5 flex-col md:flex-row">

@@ -30,7 +30,7 @@ export function AddTaskModal() {
   const isOpen = useAppSelector((state) => state.taskModal.isModalOpen)
   const task = useAppSelector((state) => state.taskModal.currentTask)
   const users=useAppSelector(selectUsers)
-  const defaultUserId=users[0].id
+  const defaultUserId=users[0]?.id
   //console.log(task)
   const form = useForm({
     defaultValues: {

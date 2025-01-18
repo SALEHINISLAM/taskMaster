@@ -1,12 +1,23 @@
 import { AddTaskModal } from "@/components/modules/tasks/addTask"
 import TaskCard from "@/components/modules/tasks/taskCard"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { openUserModal } from "@/redux/features/modal/userModalSlice"
 import { selectTasks, updateFilter, updateStatus } from "@/redux/features/tasks/taskSlice"
+import { selectUsers } from "@/redux/features/users/userSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/hook"
+import { useEffect } from "react"
 
 export default function Tasks() {
   const tasks = useAppSelector(selectTasks)
   const dispatch = useAppDispatch()
+  const users = useAppSelector(selectUsers)
+
+  useEffect(() => {
+    if (users.length === 0) {
+      dispatch(openUserModal(null))
+    }
+  }, [users,users.length,dispatch])
+  
   return (
     <div className="mx-auto max-w-7xl pt-5 mt-20 px-2">
       <div className="flex justify-end gap-5 flex-col md:flex-row">
@@ -22,7 +33,7 @@ export default function Tasks() {
         <AddTaskModal />
       </div>
       <div className="my-3">
-      <Tabs defaultValue={"pending"}>
+        <Tabs defaultValue={"pending"}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger onClick={() => dispatch(updateStatus("all"))} value="All">All</TabsTrigger>
             <TabsTrigger onClick={() => dispatch(updateStatus("pending"))} value="pending">Pending</TabsTrigger>

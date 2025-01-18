@@ -21,16 +21,7 @@ const initialState: TInitialState = {
             isCompleted: false,
             priority: "High",
             assignedTo: "asdfghjkl"
-        },
-        {
-            id: "asdfghjkm",
-            title: "Create Github Repository",
-            description: "Create github repository and push it.",
-            dueDate: toDay,
-            isCompleted: false,
-            priority: "Medium",
-            assignedTo: "asdfghjkl"
-        },
+        }
     ],
     filter: "All",
     status: "pending"
