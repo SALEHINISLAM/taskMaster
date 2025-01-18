@@ -50,7 +50,7 @@ export default function AddUserModal() {
                 <DialogHeader>
                     <DialogTitle>Add User</DialogTitle>
                     <DialogDescription>
-                        Create a new task by providing the necessary details. Fill out the fields below and click "Save Changes" to add it to your task list.
+                        Add User Name
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>

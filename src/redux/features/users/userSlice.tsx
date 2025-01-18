@@ -9,10 +9,12 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-    users: [{
-        name: "Default User",
-        id: "asdfghjkl"
-    }]
+    users: [
+    //     {
+    //     name: "Default User",
+    //     id: "asdfghjkl"
+    // }
+]
 }
 
 type DraftUser = Pick<IUser, "name">

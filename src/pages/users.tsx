@@ -1,10 +1,15 @@
 import AddUserModal from "@/components/modules/users/addUser";
 import UserCard from "@/components/modules/users/userCard";
+import { openUserModal } from "@/redux/features/modal/userModalSlice";
 import { selectUsers } from "@/redux/features/users/userSlice";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 
 export default function Users() {
-  const users=useAppSelector(selectUsers)
+  const users = useAppSelector(selectUsers)
+  const dispatch = useAppDispatch()
+  if (users.length === 0) {
+    dispatch(openUserModal(null))
+  }
   return (
     <div className="mx-auto max-w-7xl pt-5 mt-20 px-2">
       <div className="flex justify-end gap-5 flex-col md:flex-row">
